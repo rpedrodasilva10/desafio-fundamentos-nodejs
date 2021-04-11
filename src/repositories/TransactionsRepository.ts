@@ -18,6 +18,25 @@ class TransactionsRepository {
   }
 
   public getBalance(): Balance {
+    /** Solution using Array.reduce() for test purposes */
+    // let balance = this.transactions.reduce(
+    //   (acc: Balance, transaction: Transaction) => {
+    //     if (transaction.type === 'outcome') {
+    //       acc.outcome += transaction.value;
+    //     } else {
+    //       acc.income += transaction.value;
+    //     }
+
+    //     return acc;
+    //   },
+    //   {
+    //     income: 0,
+    //     outcome: 0,
+    //     total: 0,
+    //   },
+    // );
+    // balance.total = balance.income - balance.outcome;
+
     let income = 0;
     let outcome = 0;
 
@@ -28,6 +47,7 @@ class TransactionsRepository {
         income += transaction.value;
       }
     });
+
     const balance: Balance = {
       income,
       outcome,
